@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366F1;
+  --color-primary-light: #818CF8;
+  --color-primary-dark: #4F46E5;
+  --color-accent: #8B5CF6;
+  --color-accent-light: #A78BFA;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #16162A;
+  --color-bg-light: #F7F8FC;
+  --color-bg-dark: #0D0D1A;
+  --color-sidebar-light: #1A1A2E;
+  --color-sidebar-dark: #0A0A16;
+  --color-border-light: #E2E8F0;
+  --color-border-dark: #1E1E36;
+  --color-text-primary-light: #0F172A;
+  --color-text-primary-dark: #E2E8F0;
+  --color-text-secondary-light: #64748B;
+  --color-text-secondary-dark: #94A3B8;
+  --color-text-muted-light: #94A3B8;
+  --color-text-muted-dark: #475569;
+  --color-rose-muted: #D97B93;
+  --color-rose-light: #FCEEF3;
+  --color-mauve-dark: #2D1B3D;
+  --color-emerald-muted: #34D399;
+  --color-amber-muted: #D4A050;
+  --color-xp-start: #6366F1;
+  --color-xp-end: #8B5CF6;
+  --font-family-inter: 'Inter', sans-serif;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Slim scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes xp-fill {
+  from { width: 0%; }
+}
+@keyframes coin-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.05); }
+}
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes particle-float {
+  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10% { opacity: 0.3; transform: translateY(90vh) scale(0.4); }
+  90% { opacity: 0.1; }
+  100% { transform: translateY(-10vh) translateX(60px) scale(0); opacity: 0; }
+}
+@keyframes badge-unlock {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+@keyframes mandala-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes glow-soft {
+  0%, 100% { box-shadow: 0 0 0 rgba(99, 102, 241, 0); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.15); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.4s ease-out forwards; }
+.animate-xp-fill { animation: xp-fill 1s ease-out forwards; }
+.animate-coin-bounce { animation: coin-bounce 2s ease-in-out infinite; }
+.animate-subtle-pulse { animation: subtle-pulse 2s ease-in-out infinite; }
+.animate-badge-unlock { animation: badge-unlock 0.5s ease-out forwards; }
+.animate-shake { animation: shake 0.3s ease-in-out; }
+.animate-mandala { animation: mandala-rotate 90s linear infinite; }
+.animate-glow-soft { animation: glow-soft 3s ease-in-out infinite; }
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.quest-card-easy { border-left: 3px solid #34D399; }
+.quest-card-medium { border-left: 3px solid #FBBF24; }
+.quest-card-hard { border-left: 3px solid #F87171; }
+.quest-card-legendary { border-left: 3px solid #A78BFA; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: particle-float linear infinite;
+  z-index: 0;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
