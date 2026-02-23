@@ -62,6 +62,15 @@ const translations = {
   all: { en: 'All', hi: 'Sab' },
   active: { en: 'Active', hi: 'Pending' },
 
+  // ── NEW: Due date labels ───────────────────────────────────────────────────
+  dueDateLabel:   { en: 'Due Date',         hi: 'Kab Tak Karna Hai?' },
+  noDueDate:      { en: 'No due date',       hi: 'Koi deadline nahi' },
+  overdueLabel:   { en: 'Overdue!',          hi: 'Bhai Late Ho Gaye! 😬' },
+  dueTodayLabel:  { en: 'Due Today',         hi: 'Aaj Karna Hai!' },
+  dueSoonLabel:   { en: 'Due Soon',          hi: 'Jaldi Karo!' },
+  overdueCount:   { en: 'overdue',           hi: 'late' },
+  // ──────────────────────────────────────────────────────────────────────────
+
   // Notes Vault
   notesTitle: { en: 'Vidya Scrolls', hi: 'Gyaan Ki Potli 📚' },
   notesSub: { en: 'Your collection of knowledge scrolls', hi: 'Yahan pe sab notes safe hai boss!' },
@@ -141,7 +150,7 @@ const translations = {
   themeDark: { en: 'Indigo Dark', hi: 'Dark Mode' },
   themeHinglish: { en: 'Hinglish Vibe', hi: 'Hinglish Mode' },
 
-  // Challenge titles in Hinglish
+  // Challenge titles
   challengeBrahmaMuhurta: { en: 'Brahma Muhurta', hi: 'Subah Ka Hustle 🌅' },
   challengeBrahmaDesc: { en: 'Complete 3 quests before noon', hi: 'Dopahar se pehle 3 kaam karo' },
   challengeVidyaSeeker: { en: 'Vidya Seeker', hi: 'Padhai Karo Yaar 📖' },
@@ -165,10 +174,7 @@ export type TranslationKey = keyof typeof translations;
 export function t(key: TranslationKey, lang: Lang): string {
   const entry = translations[key];
   if (!entry) return key;
-  if (key === 'quotes') {
-    // Special handling for quotes array
-    return '';
-  }
+  if (key === 'quotes') return '';
   return (entry as Record<Lang, string>)[lang] || (entry as Record<Lang, string>).en;
 }
 

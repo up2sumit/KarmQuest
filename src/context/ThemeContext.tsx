@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useCallback, type ReactNode } from 'react';
 import type { Lang } from '../i18n';
+import { usePersistentState } from '../hooks/usePersistentState';
 
 export type ThemeMode = 'light' | 'dark' | 'hinglish';
 
@@ -22,20 +23,22 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeMode>('light');
+  // CHANGED: useState → usePersistentState so theme survives page refresh
+  const [theme, setThemeState] = usePersistentState<ThemeMode>('kq_theme', 'light');
 
   const isDark = theme === 'dark';
   const isHinglish = theme === 'hinglish';
   const lang: Lang = isHinglish ? 'hi' : 'en';
 
-  const setTheme = useCallback((t: ThemeMode) => setThemeState(t), []);
+  const setTheme = useCallback((t: ThemeMode) => setThemeState(t), [setThemeState]);
+
   const cycleTheme = useCallback(() => {
     setThemeState(prev => {
       if (prev === 'light') return 'dark';
       if (prev === 'dark') return 'hinglish';
       return 'light';
     });
-  }, []);
+  }, [setThemeState]);
 
   return (
     <ThemeContext.Provider value={{ theme, isDark, isHinglish, lang, setTheme, cycleTheme }}>
